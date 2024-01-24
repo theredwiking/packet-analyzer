@@ -1,10 +1,12 @@
 mod devices;
 mod listener;
+mod classifier;
 
 use clap::{Parser, ArgAction};
 use tokio::sync::mpsc;
 use listener::listen;
 use devices::list;
+use classifier::ip_version;
 
 #[derive(Parser)]
 struct Args {
@@ -30,7 +32,7 @@ async fn main() {
         });
 
         while let Some(packet) = rx.recv().await {
-            println!("Packet length: {}", packet.header.len);
+            ip_version(packet);
         }
     }
 }
