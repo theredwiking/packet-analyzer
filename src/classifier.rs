@@ -1,7 +1,6 @@
-use std::u8;
-
 use pnet::packet::{ethernet::{EtherTypes, EthernetPacket}, ipv4::Ipv4Packet, ipv6::Ipv6Packet, Packet};
 use crate::listener::PacketInfo;
+use std::u8;
 
 #[allow(dead_code)]
 #[derive(Debug)]

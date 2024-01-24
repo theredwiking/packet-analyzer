@@ -1,12 +1,12 @@
-mod devices;
-mod listener;
 mod classifier;
+mod listener;
+mod devices;
 
 use clap::{Parser, ArgAction};
+use classifier::ip_version;
 use tokio::sync::mpsc;
 use listener::listen;
 use devices::list;
-use classifier::ip_version;
 
 #[derive(Parser)]
 struct Args {
