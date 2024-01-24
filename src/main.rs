@@ -28,11 +28,11 @@ async fn main() {
         list();
     } else {
         tokio::spawn(async move {
-            listen(args.interface.as_str(), tx).await;
+            while let Some(packet) = rx.recv().await {
+                ip_version(packet);
+            }
         });
 
-        while let Some(packet) = rx.recv().await {
-            ip_version(packet);
-        }
+        listen(args.interface.as_str(), tx).await;
     }
 }
