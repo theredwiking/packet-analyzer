@@ -2,10 +2,10 @@ use influxdb::{Client, InfluxDbWriteable, WriteQuery};
 use crate::config::DBConfig;
 use chrono::{DateTime, Utc};
 
+// TODO: Find way to store payload u8
 #[derive(InfluxDbWriteable, Clone)]
 pub struct RawPacket {
     pub time: DateTime<Utc>,
-    //#[influxdb(tag)] pub ipv: i32,
     #[influxdb(tag)] pub protocol: String,
     pub source: String,
     pub destination: String,

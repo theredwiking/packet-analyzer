@@ -3,6 +3,7 @@ use crate::{influx::RawPacket, listener::PacketInfo};
 use influxdb::{InfluxDbWriteable, WriteQuery};
 use chrono::offset;
 
+// TODO: Delete struct
 #[allow(dead_code)]
 #[derive(Debug)]
 pub struct PacketConvert {
