@@ -581,6 +581,7 @@ dependencies = [
  "clap",
  "pcap",
  "pnet",
+ "serde",
  "tokio",
  "toml",
 ]

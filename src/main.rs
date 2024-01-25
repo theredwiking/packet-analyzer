@@ -1,9 +1,11 @@
 mod classifier;
 mod listener;
 mod devices;
+mod config;
 
 use clap::{Parser, ArgAction};
 use classifier::ip_version;
+use config::{load_config, Config};
 use tokio::sync::mpsc;
 use listener::listen;
 use devices::list;
@@ -20,6 +22,8 @@ struct Args {
 
 #[tokio::main]
 async fn main() {
+    let config: Config = load_config().expect("Failed to load");
+
     let args = Args::parse();
 
     let (tx, mut rx) = mpsc::channel(255);
@@ -33,6 +37,7 @@ async fn main() {
             }
         });
 
-        listen(args.interface.as_str(), tx).await;
+        let interface = if !args.interface.is_empty() { args.interface.as_str() } else { config.network.interface.as_str() };
+        listen(interface, tx).await;
     }
 }
