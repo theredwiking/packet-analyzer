@@ -1,7 +1,0 @@
-[network]
-interface = "<eth0>"
-
-[database]
-url = "https://<ip>:<port>"
-bucket = "<bucket>"
-token = "<apikey>"
