@@ -4,12 +4,13 @@ mod devices;
 mod config;
 mod influx;
 
+use config::{load_config, Config};
 use clap::{Parser, ArgAction};
 use classifier::ip_version;
-use config::{load_config, Config};
-use influx::database;
+use influxdb::WriteQuery;
 use tokio::sync::mpsc;
 use listener::listen;
+use influx::database;
 use devices::list;
 
 #[derive(Parser)]
@@ -34,9 +35,15 @@ async fn main() {
         list();
     } else {
         tokio::spawn(async move {
+            let mut packets: Vec<WriteQuery> = vec![];
             while let Some(packet) = rx.recv().await {
-                ip_version(packet);
-                database(config.database.clone()).await;
+                if packets.len() == 500 {
+                    database(config.database.clone(), &packets).await;
+                    packets.clear();
+                }
+                if let Some(converted) = ip_version(packet) {
+                    packets.push(converted);
+                }
             }
         });
 

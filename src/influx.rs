@@ -1,28 +1,29 @@
+use influxdb::{Client, InfluxDbWriteable, WriteQuery};
 use crate::config::DBConfig;
-use chrono::{offset, DateTime, Utc};
-use influxdb::{Client, InfluxDbWriteable};
+use chrono::{DateTime, Utc};
 
-#[derive(InfluxDbWriteable)]
-struct RawPacket {
-    time: DateTime<Utc>,
-    #[influxdb(tag)]protocol: String,
-    source: String,
-    destination: String,
+#[derive(InfluxDbWriteable, Clone)]
+pub struct RawPacket {
+    pub time: DateTime<Utc>,
+    //#[influxdb(tag)] pub ipv: i32,
+    #[influxdb(tag)] pub protocol: String,
+    pub source: String,
+    pub destination: String,
 }
 
-pub async fn database(config: DBConfig) {
+pub async fn database(config: DBConfig, packets: &Vec<WriteQuery>) {
     let client = Client::new(config.url, config.bucket).with_token(config.token);
-    let current_time = offset::Utc::now();
 
-    let packet = RawPacket {
+    /*let packet = RawPacket {
         time: current_time,
         source: String::from("1.1.1.1"),
         destination: String::from("192.168.0.1"),
         protocol: String::from("Tcp"),
-    }.into_query("packer");
-
+    }.into_query(config.measurement);*/
+    //packets.into_qeury(config.measurement);
+    
     let write_result = client
-        .query(packet)
+        .query(packets)
         .await;
     assert!(write_result.is_ok(), "Writing failed");
 }
