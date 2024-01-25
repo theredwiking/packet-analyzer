@@ -13,14 +13,6 @@ pub struct RawPacket {
 
 pub async fn database(config: DBConfig, packets: &Vec<WriteQuery>) {
     let client = Client::new(config.url, config.bucket).with_token(config.token);
-
-    /*let packet = RawPacket {
-        time: current_time,
-        source: String::from("1.1.1.1"),
-        destination: String::from("192.168.0.1"),
-        protocol: String::from("Tcp"),
-    }.into_query(config.measurement);*/
-    //packets.into_qeury(config.measurement);
     
     let write_result = client
         .query(packets)
