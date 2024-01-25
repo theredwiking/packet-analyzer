@@ -15,7 +15,7 @@ pub struct NetworkConfig {
 }
 
 #[allow(dead_code)]
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct DBConfig {
     pub url: String,
     pub bucket: String,

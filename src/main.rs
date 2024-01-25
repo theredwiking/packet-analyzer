@@ -2,10 +2,12 @@ mod classifier;
 mod listener;
 mod devices;
 mod config;
+mod influx;
 
 use clap::{Parser, ArgAction};
 use classifier::ip_version;
 use config::{load_config, Config};
+use influx::database;
 use tokio::sync::mpsc;
 use listener::listen;
 use devices::list;
@@ -34,6 +36,7 @@ async fn main() {
         tokio::spawn(async move {
             while let Some(packet) = rx.recv().await {
                 ip_version(packet);
+                database(config.database.clone()).await;
             }
         });
 
