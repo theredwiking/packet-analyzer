@@ -3,17 +3,6 @@ use crate::{influx::RawPacket, listener::PacketInfo};
 use influxdb::{InfluxDbWriteable, WriteQuery};
 use chrono::offset;
 
-// TODO: Delete struct
-#[allow(dead_code)]
-#[derive(Debug)]
-pub struct PacketConvert {
-    ipv: Box<str>,
-    source_ip: String,
-    dest_ip: String,
-    protocol: String,
-    //payload: Box<[u8]>,
-}
-
 pub fn ip_version(packet: PacketInfo) -> Option<WriteQuery> {
     if let Some(ethernet_packer) = EthernetPacket::new(&packet.data) {
         let current_time = offset::Utc::now();

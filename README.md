@@ -13,5 +13,4 @@ token = "<apikey>"
 
 # Todo:
 1. Add error handling
-2. Remove unused code
-3. Find a way to save packet payload (which is u8)
+2. Find a way to save packet payload (which is u8)
