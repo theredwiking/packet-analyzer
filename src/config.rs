@@ -20,7 +20,6 @@ pub struct DBConfig {
     pub url: String,
     pub bucket: String,
     pub token: String,
-    pub measurement: String,
 }
 
 pub fn load_config() -> Result<Config, ()> {
