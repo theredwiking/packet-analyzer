@@ -1,3 +1,4 @@
-/target
-/influxDB
+# For rust project
+rust/target
 config.toml
+
