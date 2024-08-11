@@ -8,6 +8,7 @@ import (
 	"text/tabwriter"
 )
 
+// List all interfaces
 func InterfaceList() {
 	ifaces, err := net.Interfaces()
 	if err != nil {
@@ -15,14 +16,14 @@ func InterfaceList() {
 		os.Exit(1)
 	}
 
-	w := tabwriter.NewWriter(os.Stdout,	0, 1, 1, ' ', 0)
+	w := tabwriter.NewWriter(os.Stdout, 0, 1, 1, ' ', 0)
 	fmt.Fprintln(w, "Name\tAddress")
 
 	for _, iface := range ifaces {
 		if iface.Flags&net.FlagUp == 0 {
 			continue
 		}
-		
+
 		addrs, err := iface.Addrs()
 		if err != nil {
 			continue
@@ -33,6 +34,7 @@ func InterfaceList() {
 	w.Flush()
 }
 
+// Returns ipv4 of interface from iface.Addrs()
 func getIP(addrs []net.Addr) string {
 	var ip string
 	for _, addr := range addrs {
