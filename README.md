@@ -1,4 +1,4 @@
 # packet-analyzer
 
-Network packet sniffer written in different languages
+Network packet sniffer implemented in different langauges
 Features supported will vary between projects
