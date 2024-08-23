@@ -1,4 +1,4 @@
-package core
+package listener
 
 import (
 	"log"
@@ -10,7 +10,7 @@ import (
 )
 
 // Start listiner on the given interface
-func StartListiner(config models.Config) {
+func StartListener(config models.Config) {
 	handle, err := pcap.OpenLive(config.Iface, config.Snaplen, config.Promiscuous, 30*time.Second)
 	if err != nil {
 		log.Fatalln(err)

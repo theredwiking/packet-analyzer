@@ -1,11 +1,8 @@
-# For rust project
-rust/target
-
 # For golang project
-go/dist
-go/.out
-go/*.test
-go/go.work
+dist
+.out
+*.test
+go.work
 
 # Removes config file
 config.toml
