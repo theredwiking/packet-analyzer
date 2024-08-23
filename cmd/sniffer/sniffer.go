@@ -33,7 +33,8 @@ func main() {
 			fmt.Println(err)
 			return
 		}
-		fmt.Println("New config file created")
+		fmt.Println("New config file created in current dir")
+		fmt.Println("Open in editor and change config")
 	}
 
 	if *configFile {
