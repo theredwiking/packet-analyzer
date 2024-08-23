@@ -45,3 +45,4 @@ token = "<apikey>"
 - [ ] Add better test
 - [ ] Add performance monitoring
 - [ ] Figure out how to package program for different distros
+- [ ] Add more docs
