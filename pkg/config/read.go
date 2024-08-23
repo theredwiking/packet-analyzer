@@ -8,6 +8,8 @@ import (
 )
 
 // Loads config from toml file
+//
+// It looks in $HOME/.config/packet_analyzer or from current directory
 func LoadConfig() (*models.Config, error) {
 	viper.SetConfigName("config")
 	viper.SetConfigType("toml")

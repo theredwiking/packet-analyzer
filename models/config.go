@@ -27,6 +27,7 @@ func NewConfig(iface string, snaplen int32, promiscuous bool, url string, bucket
 	}
 }
 
+// Prints content from selected config
 func (conf *Config) Contains() {
 	w := tabwriter.NewWriter(os.Stdout, 0, 1, 1, ' ', 0)
 	fmt.Fprintln(w, "Network")

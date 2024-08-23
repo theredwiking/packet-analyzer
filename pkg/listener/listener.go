@@ -9,7 +9,7 @@ import (
 	"github.com/theredwiking/packet-analyzer/go/models"
 )
 
-// Start listiner on the given interface
+// Start listiner on the interface in provided config
 func StartListener(config models.Config) {
 	handle, err := pcap.OpenLive(config.Iface, config.Snaplen, config.Promiscuous, 30*time.Second)
 	if err != nil {

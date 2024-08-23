@@ -6,6 +6,9 @@ import (
 	"os"
 )
 
+// Creates new config file in directory provide with filename
+//
+// Example CreateConfig("./config") it auto add .toml
 func CreateConfig(filename string) error {
 	filename = fmt.Sprintf("%s.toml", filename)
 	_, err := os.Stat(filename)
