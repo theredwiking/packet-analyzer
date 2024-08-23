@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 
 	"github.com/theredwiking/packet-analyzer/go/pkg/config"
 	"github.com/theredwiking/packet-analyzer/go/pkg/interfaces"
@@ -16,14 +17,22 @@ func main() {
 
 	flag.Parse()
 
-	conf := config.LoadConfig()
+	conf, err := config.LoadConfig()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 
 	if *ifaces {
 		interfaces.InterfaceList()
 	}
 
 	if *createConfig {
-		config.CreateConfig()
+		err = config.CreateConfig("./config")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 		fmt.Println("New config file created")
 	}
 

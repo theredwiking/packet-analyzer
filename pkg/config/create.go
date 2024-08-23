@@ -1,18 +1,19 @@
 package config
 
 import (
+	"errors"
 	"fmt"
 	"os"
 )
 
-func CreateConfig() {
-	_, err := os.Stat("./config.toml")
+func CreateConfig(filename string) error {
+	filename = fmt.Sprintf("%s.toml", filename)
+	_, err := os.Stat(filename)
 
 	if os.IsNotExist(err) {
-		file, err := os.Create("./config.toml")
+		file, err := os.Create(filename)
 		if err != nil {
-			fmt.Println(err)
-			return
+			return err
 		}
 		defer file.Close()
 
@@ -24,10 +25,11 @@ promiscuous = <false>
 [database]
 url = "http://<ip>:<port>"
 bucket = "<bucket>"
-token = "<apikey>"`)
+token = "<apikey>"
+`)
 		fmt.Fprintf(file, content)
 	} else {
-		fmt.Println("Config already exist")
-		return
+		return errors.New("File already exist")
 	}
+	return nil
 }
