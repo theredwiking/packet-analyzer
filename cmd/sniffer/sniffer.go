@@ -13,7 +13,6 @@ func main() {
 	ifaces := flag.Bool("i", false, "List available interfaces")
 	configFile := flag.Bool("c", false, "List out config content")
 	createConfig := flag.Bool("n", false, "Creates new config file")
- 
 
 	flag.Parse()
 
@@ -25,13 +24,14 @@ func main() {
 
 	if *createConfig {
 		config.CreateConfig()
+		fmt.Println("New config file created")
 	}
 
 	if *configFile {
 		conf.Contains()
 	}
 
-	if !*ifaces && !*configFile  && !*createConfig {
+	if !*ifaces && !*configFile && !*createConfig {
 		fmt.Printf("Starting to listing on interface: %s", conf.Iface)
 		listener.StartListener(*conf)
 	}

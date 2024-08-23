@@ -16,7 +16,16 @@ func CreateConfig() {
 		}
 		defer file.Close()
 
-		fmt.Fprintf(file, "")
+		content := fmt.Sprint(`[network]
+interface = "<eht0>"
+snaplen = <262144>
+promiscuous = <false>
+
+[database]
+url = "http://<ip>:<port>"
+bucket = "<bucket>"
+token = "<apikey>"`)
+		fmt.Fprintf(file, content)
 	} else {
 		fmt.Println("Config already exist")
 		return
