@@ -1,7 +1,12 @@
 # Packet-Analyzer
 
 This is an project for learning about packet sniffing using go.
-It is also used to test and learn different techologies like influxdb and perhaps kafka
+
+It is also used to test and learn different techologies, some of the them will probably be:
+- [Logrus](https://github.com/Sirupsen/logrus)
+- [Prometheus](https://prometheus.io/)
+- [Influxdb](https://www.influxdata.com/)
+- [Logrus-influxdb](https://github.com/Abramovic/logrus_influxdb)
 
 ## Info
 This project is fully developed and tested on Debian.
