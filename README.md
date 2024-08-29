@@ -3,13 +3,23 @@
 This is an project for learning about packet sniffing using go.
 
 It is also used to test and learn different techologies, some of the them will probably be:
-- [Logrus](https://github.com/Sirupsen/logrus)
 - [Prometheus](https://prometheus.io/)
 - [Influxdb](https://www.influxdata.com/)
-- [Logrus-influxdb](https://github.com/Abramovic/logrus_influxdb)
+- [OpenTelemetry](https://opentelemetry.io/)
+- [Grafana](https://grafana.com/)
 
-## Info
-This project is fully developed and tested on Debian.
+## Needs to be tested
+Must be tested in golang project\
+Prometheus vs OpenTelemetry (for metrics)\
+Logrus vs Zap (save log files to influxdb)\
+Log library vs OpenTelemetry (for logs)
+
+## Missing information
+Where to save OpenTelemetry data, both logs and metric.\
+Display logs and metrics in Grafana.
+
+# Tested enviroments
+This project is fully developed and tested on Debian.\
 Help need for Windows and MacOS development part and test
 
 # Setup
