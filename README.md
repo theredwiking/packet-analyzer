@@ -24,7 +24,7 @@ Where to save OpenTelemetry data, both logs and metric.\
 Display logs and metrics in Grafana.
 
 # Tested enviroments
-This project is fully developed and tested on Debian.\
+This project is fully developed and tested on Debian.
 
 # Setup
 
