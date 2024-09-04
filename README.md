@@ -70,8 +70,9 @@ token = "<apikey>"
 ```
 
 # Todo:
-- [ ] Add function and channel to handle packet data
+- [x] Add function and channel to handle packet data
 - [ ] Add better test
 - [ ] Add performance monitoring
 - [ ] Figure out how to package program for different distros
 - [ ] Add more docs
+- [ ] Add handler for different use cases

@@ -6,6 +6,7 @@ import (
 	"github.com/google/gopacket"
 )
 
+// Select what handler to use and returns channel for sending packets
 func Handler(handler int) chan gopacket.Packet {
 	packets := make(chan gopacket.Packet, 64)
 
