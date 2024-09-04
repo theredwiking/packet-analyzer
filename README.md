@@ -30,11 +30,23 @@ Help need for Windows and MacOS development part and test
 - setcap
 
 ## Compile
+If make is installed make use of makefile only for linux currently
+```bash
+make
+```
+
+Else use this command to compile for current platform
 ```bash
 go build -v -o dist/sniffer ./cmd/sniffer
 ```
 
 ## To run
+Makefile also containts option for running development 
+```bash
+make dev
+```
+
+If above command was not used this is necesarry
 ```bash
 sudo setcap cap_net_raw,cap_net_admin=eip ./dist/sniffer
 ```
