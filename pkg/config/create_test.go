@@ -12,6 +12,7 @@ import (
 func TestCreateConfig(t *testing.T) {
 	filename := "./test"
 	assert := assert.New(t)
+
 	err := CreateConfig(filename)
 
 	filename = fmt.Sprintf("%s.toml", filename)
@@ -42,6 +43,7 @@ bucket = "<bucket>"
 token = "<apikey>"
 `)
 	assert.Equal(content, string(buf), "Should contain the same content")
-
-	os.Remove(filename + ".toml")
+	
+	err = os.Remove(filename)
+	assert.Nil(err, "File failed to delete")
 }

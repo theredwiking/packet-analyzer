@@ -1,6 +1,7 @@
 # Packet-Analyzer
 
-This is an project for learning about packet sniffing using go.
+This is an project for learning about packet sniffing using go.\
+This project can also be used by other go projects as an package, for how ton use look at cmd/sniffer/sniffer.go for implementation of functions
 
 It is also used to test and learn different techologies like influxdb and perhaps kafka
 

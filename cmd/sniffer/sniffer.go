@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/google/gopacket"
 	"github.com/theredwiking/packet-analyzer/go/pkg/config"
+	"github.com/theredwiking/packet-analyzer/go/pkg/handlers"
 	"github.com/theredwiking/packet-analyzer/go/pkg/interfaces"
 	"github.com/theredwiking/packet-analyzer/go/pkg/listener"
 )
@@ -42,7 +44,9 @@ func main() {
 	}
 
 	if !*ifaces && !*configFile && !*createConfig {
+		packets := make(chan gopacket.Packet, 64)
 		fmt.Printf("Starting to listing on interface: %s", conf.Iface)
-		listener.StartListener(*conf)
+		handlers.Handler(1, packets)
+		listener.StartListener(*conf, packets)
 	}
 }
