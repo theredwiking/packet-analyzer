@@ -2,6 +2,11 @@
 
 This is an project for learning about packet sniffing using go.
 
+It is also used to test and learn different techologies like influxdb and perhaps kafka
+
+## Info
+This project is fully developed and tested on Debian.
+
 It is also used to test and learn different techologies, some of the them will probably be:
 - [Prometheus](https://prometheus.io/)
 - [Influxdb](https://www.influxdata.com/)
@@ -20,7 +25,6 @@ Display logs and metrics in Grafana.
 
 # Tested enviroments
 This project is fully developed and tested on Debian.\
-Help need for Windows and MacOS development part and test
 
 # Setup
 
@@ -65,10 +69,7 @@ token = "<apikey>"
 ```
 
 # Todo:
-- [ ] Add struct for easy handle of packet data
-- [ ] Decoded packet data into custom struct
-- [ ] Save data to influxdb
-- [ ] Research sending data to kafka for investigation
+- [ ] Add function and channel to handle packet data
 - [ ] Add better test
 - [ ] Add performance monitoring
 - [ ] Figure out how to package program for different distros
