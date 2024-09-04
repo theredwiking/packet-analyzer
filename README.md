@@ -38,10 +38,7 @@ token = "<apikey>"
 ```
 
 # Todo:
-- [ ] Add struct for easy handle of packet data
-- [ ] Decoded packet data into custom struct
-- [ ] Save data to influxdb
-- [ ] Research sending data to kafka for investigation
+- [ ] Add function and channel to handle packet data
 - [ ] Add better test
 - [ ] Add performance monitoring
 - [ ] Figure out how to package program for different distros
