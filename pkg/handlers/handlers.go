@@ -6,8 +6,8 @@ import (
 	"github.com/google/gopacket"
 )
 
-// Function to select how to handle incoming packets
-func Handler(handler int, packets chan gopacket.Packet) {
+func Handler(handler int) chan gopacket.Packet {
+	packets := make(chan gopacket.Packet, 64)
 
 	switch handler {
 	case 1:
@@ -15,4 +15,5 @@ func Handler(handler int, packets chan gopacket.Packet) {
 	default:
 		log.Println("No option provided")
 	}
+	return packets
 }
