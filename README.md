@@ -1,11 +1,30 @@
 # Packet-Analyzer
 
 This is an project for learning about packet sniffing using go.
+
 It is also used to test and learn different techologies like influxdb and perhaps kafka
 
 ## Info
 This project is fully developed and tested on Debian.
-Help need for Windows and MacOS development part and test
+
+It is also used to test and learn different techologies, some of the them will probably be:
+- [Prometheus](https://prometheus.io/)
+- [Influxdb](https://www.influxdata.com/)
+- [OpenTelemetry](https://opentelemetry.io/)
+- [Grafana](https://grafana.com/)
+
+## Needs to be tested
+Must be tested in golang project\
+Prometheus vs OpenTelemetry (for metrics)\
+Logrus vs Zap (save log files to influxdb)\
+Log library vs OpenTelemetry (for logs)
+
+## Missing information
+Where to save OpenTelemetry data, both logs and metric.\
+Display logs and metrics in Grafana.
+
+# Tested enviroments
+This project is fully developed and tested on Debian.\
 
 # Setup
 
@@ -15,11 +34,23 @@ Help need for Windows and MacOS development part and test
 - setcap
 
 ## Compile
+If make is installed make use of makefile only for linux currently
+```bash
+make
+```
+
+Else use this command to compile for current platform
 ```bash
 go build -v -o dist/sniffer ./cmd/sniffer
 ```
 
 ## To run
+Makefile also containts option for running development 
+```bash
+make dev
+```
+
+If above command was not used this is necesarry
 ```bash
 sudo setcap cap_net_raw,cap_net_admin=eip ./dist/sniffer
 ```
